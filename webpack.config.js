@@ -16,14 +16,9 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx$/, loader: "jsx-loader" },
-      // Backbone somehow hit's the AMD code path instead of CommonJS one.
-      { test: /backbone\.js$/, loader: "imports?define=>false" }
+      // Make UMD hit the CommonJS path.
+      { test: /exoskeleton\.js$/, loader: "imports?define=>false" }
     ]
-  },
-  resolve: {
-    alias: {
-      "underscore": "lodash/dist/lodash.underscore"
-    }
   },
   plugins: [
     // Optimize

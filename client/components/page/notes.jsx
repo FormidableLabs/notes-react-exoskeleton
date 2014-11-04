@@ -6,7 +6,7 @@
  */
 /*jshint unused:false */
 var React = require("react");
-var _ = require("lodash/dist/lodash.underscore");
+var Backbone = require("exoskeleton");
 var Base = require("./base.jsx");
 var NotesItem = require("./notes/item.jsx");
 
@@ -21,8 +21,7 @@ module.exports = React.createClass({
   //       todomvc-backbone/js/app.js#L148-L171
   componentDidMount: function() {
     // [BB] Add forceUpdate bindings.
-    this.props.notes.on("add remove",
-      _.bind(this.forceUpdate.bind, null), this);
+    this.props.notes.on("add remove", this.forceUpdate.bind(this, null));
   },
 
   componentWillUnmount: function() {
@@ -84,13 +83,13 @@ module.exports = React.createClass({
   // Render.
   render: function () {
     // [BB] Add all notes from collection, sorted old to new.
-    var noteNodes = this.props.notes.chain()
-      .filter(function (m) {
-        return this.isMatch(this.props.filter, m.get("title"));
-      }, this)
-      .sortBy(function (m) { return m.get("createdAt"); })
-      .map(this.addNote, this)
-      .value();
+    var noteNodes = this.props.notes.filter(function (m) {
+      return this.isMatch(this.props.filter, m.get("title"));
+    }, this);
+
+    noteNodes = Backbone.utils
+      .sortBy(noteNodes, function (m) { return m.get("createdAt"); })
+      .map(this.addNote, this);
 
     return (/*jshint ignore:start */
       <Base>

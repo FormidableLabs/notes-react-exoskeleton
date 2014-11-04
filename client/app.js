@@ -3,8 +3,12 @@
  * Entry point.
  */
 /*jshint unused:false */
-var Backbone = require("backbone");
-Backbone.$ = require("jquery");
+// Polyfills (ie8 compatibility).
+require("es5-shim/es5-shim");
+require("es5-shim/es5-sham");
+
+// Libs
+var Backbone = require("exoskeleton");
 var React = require("react");
 var NotesCollection = require("./collections/notes");
 var Router = require("./routers/router");

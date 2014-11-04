@@ -1,7 +1,5 @@
 // Notes Collection
-var _ = require("lodash/dist/lodash.underscore");
-var Backbone = require("backbone");
-
+var Backbone = require("exoskeleton");
 var NoteModel = require("../models/note");
 
 var NotesCollection = Backbone.Collection.extend({
@@ -10,8 +8,10 @@ var NotesCollection = Backbone.Collection.extend({
 });
 
 // Singleton.
-NotesCollection.getInstance = _.memoize(function () {
-  return new NotesCollection();
-});
+var _instance;
+NotesCollection.getInstance = function () {
+  _instance = _instance || new NotesCollection();
+  return _instance;
+};
 
 module.exports = NotesCollection;
