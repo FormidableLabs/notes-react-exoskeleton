@@ -6,7 +6,7 @@
  */
 /*jshint unused:false */
 var React = require("react");
-var Backbone = require("backbone");
+var Backbone = require("exoskeleton");
 var Base = require("./base.jsx");
 
 var _updateLoc = function (action) {

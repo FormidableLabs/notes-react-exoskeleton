@@ -6,7 +6,6 @@
  */
 /*jshint unused:false */
 var React = require("react");
-var _ = require("lodash/dist/lodash.underscore");
 var Base = require("./base.jsx");
 var NoteView = require("./note/view.jsx");
 var NoteEdit = require("./note/edit.jsx");
@@ -17,8 +16,9 @@ module.exports = React.createClass({
   //       todomvc-backbone/js/app.js#L148-L171
   componentDidMount: function() {
     // [BB] Add forceUpdate bindings.
-    this.props.note.on("add change remove",
-      _.bind(this.forceUpdate.bind, null), this);
+    this.props.note.on("add change remove", function () {
+      this.forceUpdate();
+    }, this);
   },
 
   componentWillUnmount: function() {

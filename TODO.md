@@ -7,9 +7,12 @@ Tasks
 
 ## notes-react-ampersand
 
+* Goal IE8+.
+    * http://facebook.github.io/react/docs/working-with-the-browser.html#browser-support-and-polyfills
+    * https://github.com/es-shims/es5-shim/blob/master/es5-shim.min.js 14.315 kb
+    * https://github.com/es-shims/es5-shim/blob/master/es5-sham.min.js 4.415 kb
+
 * Switch to ampersand components.
-* Look to `react-router`
-* Remove jQuery.
 * Replace Underscore with es5-shim / make sure we do polyfills right.
     * E.g., I have lots of `.bind()` around.
 * Switch to Jade with whitespace stripping.

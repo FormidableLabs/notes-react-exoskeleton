@@ -1,5 +1,5 @@
-Notes - React + Ampersand
-=========================
+Notes - React + Exoskeleton
+===========================
 
 [![Build Status][trav_img]][trav_site]
 
@@ -12,13 +12,16 @@ Notes is now client-side **and** server-side rendered thanks to the magic of
 React. The app uses:
 
 * React for view logic.
-* Ampersand for models, collections and routers.
+* Exoskeleton for models, collections and routers.
 * Markdown JS for markdown conversion.
 * Bootstrap for CSS (not JS).
+* ES5 shim + sham for polyfills.
 
 Notably, the app does _not_ include:
 
 * Bootstrap JS
+* jQuery
+* Underscore/Lodash
 
 Instead relying on React to mostly take care of DOM work with a little bit
 of VanillaJS.
@@ -65,8 +68,6 @@ Run the server.
 $ NODE_ENV=production node server/index.js
 ```
 
-curl -I -H "Accept-Encoding: gzip,deflate" http://127.0.0.1:3000/app/js-dist/bundle.js | grep "Content-Encoding"
-
 ## React Notes
 
 ### Optimizations
@@ -78,11 +79,11 @@ $ gulp prod
 
 # Minified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-267802
+182637
 
 # Minified gzipped size
 $ curl -so /dev/null -w '%{size_download}\n' --compressed http://127.0.0.1:3000/app/js-dist/bundle.js
-85223
+55669
 ```
 
 And in dev (for a comparison):
@@ -92,7 +93,7 @@ $ gulp dev
 
 # Unminified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-1169512
+820446
 ```
 
 [trav]: https://travis-ci.org/

@@ -3,8 +3,19 @@
  * Entry point.
  */
 /*jshint unused:false */
-var Backbone = require("backbone");
-Backbone.$ = require("jquery");
+// TODO: Move all this to common place?
+// Polyfills (ie8 compatibility).
+require("es5-shim/es5-shim");
+require("es5-shim/es5-sham");
+
+// Exoskeleton
+var Backbone = require("exoskeleton");
+var ajax = require("component-ajax");
+Backbone.ajax = function () { // Ajax support.
+  return ajax.apply(ajax, arguments);
+};
+
+// Normal lbs
 var React = require("react");
 var NotesCollection = require("./collections/notes");
 var Router = require("./routers/router");

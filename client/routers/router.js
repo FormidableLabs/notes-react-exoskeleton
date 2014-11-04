@@ -1,5 +1,5 @@
 var React = require("react");
-var Backbone = require("backbone");
+var Backbone = require("exoskeleton");
 var NotesView = React.createFactory(require("../components/notes.jsx"));
 var NoteView = React.createFactory(require("../components/note.jsx"));
 var NotesCollection = require("../collections/notes");

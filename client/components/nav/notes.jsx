@@ -7,7 +7,6 @@
 /*jshint unused:false */
 var React = require("react");
 var Base = require("./base.jsx");
-var _ = require("lodash/dist/lodash.underscore");
 
 module.exports = React.createClass({
   // --------------------------------------------------------------------------
@@ -20,9 +19,9 @@ module.exports = React.createClass({
   // Update filter value on changes.
   updateFilter: function (ev) {
     ev.preventDefault();
-    this.setState({ filter: ev.target.value }, _.bind(function () {
+    this.setState({ filter: ev.target.value }, function () {
       this.props.onUpdateFilter(this.state.filter);
-    }, this));
+    }.bind(this));
   },
 
   // --------------------------------------------------------------------------

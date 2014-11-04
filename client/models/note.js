@@ -1,4 +1,4 @@
-var Backbone = require("backbone");
+var Backbone = require("exoskeleton");
 
 // Notes Model
 var NoteModel = Backbone.Model.extend({

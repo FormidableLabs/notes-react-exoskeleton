@@ -5,7 +5,7 @@
  * A single note within a list of notes.
  */
 var React = require("react");
-var Backbone = require("backbone");
+var Backbone = require("exoskeleton");
 
 module.exports = React.createClass({
   // --------------------------------------------------------------------------

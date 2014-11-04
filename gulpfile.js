@@ -130,7 +130,7 @@ gulp.task("build:dev",  ["build:dist"]);
 gulp.task("server", function () {
   nodemon({
     script: "server/index.js",
-    ext: "js",
+    ext: "js,jsx",
     watch: [
       "server",
       "client"
