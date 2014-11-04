@@ -20,6 +20,11 @@ module.exports = {
       { test: /exoskeleton\.js$/, loader: "imports?define=>false" }
     ]
   },
+  externals: {
+    // Deliberately undefined vars for conditional exclusion for exoskeleton.
+    "jquery": "__NOOP",
+    "underscore": "__NOOP"
+  },
   plugins: [
     // Optimize
     new webpack.optimize.DedupePlugin(),
