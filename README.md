@@ -1,5 +1,5 @@
-Notes - React
-=============
+Notes - React + Ampersand
+=========================
 
 [![Build Status][trav_img]][trav_site]
 
@@ -12,9 +12,7 @@ Notes is now client-side **and** server-side rendered thanks to the magic of
 React. The app uses:
 
 * React for view logic.
-* Backbone for models, collections and routers.
-* Lodash for Backbone and utilities.
-* jQuery (Well, we _don't_ want to include it, but BB needs it for pushstate).
+* Ampersand for models, collections and routers.
 * Markdown JS for markdown conversion.
 * Bootstrap for CSS (not JS).
 
@@ -97,26 +95,9 @@ $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/b
 1169512
 ```
 
-### Server/Client State & Rendering
-
-One gotcha is to make sure the DOM state renders *exactly* the same on both
-client and server-side. Failing this, you will get a message like:
-
-> React attempted to use reuse markup in a container but the checksum was
-> invalid. This generally means that you are using server rendering and the
-> markup generated on the server was not what the client was expecting. React
-> injected new markup to compensate which works but you have lost many of the
-> benefits of server rendering. Instead, figure out why the markup being
-> generated is different on the client or server.
-
-in the dev. console. One such mistake that can cause this is setting a `key`
-or DOM `id` property off something like a Backbone Model `cid`, which can
-vary across client / server side, instead of the more reliable, consistent
-`id` property.
-
 [trav]: https://travis-ci.org/
-[trav_img]: https://api.travis-ci.org/FormidableLabs/notes-react.svg
-[trav_site]: https://travis-ci.org/FormidableLabs/notes-react
+[trav_img]: https://api.travis-ci.org/FormidableLabs/notes-react-ampersand.svg
+[trav_site]: https://travis-ci.org/FormidableLabs/notes-react-ampersand
 [react]: http://facebook.github.io/react/
 [cjs]: http://wiki.commonjs.org/wiki/CommonJS
 [webpack]: http://webpack.github.io/
