@@ -21,7 +21,9 @@ module.exports = React.createClass({
   //       todomvc-backbone/js/app.js#L148-L171
   componentDidMount: function() {
     // [BB] Add forceUpdate bindings.
-    this.props.notes.on("add remove", this.forceUpdate.bind(this, null));
+    this.props.notes.on("add remove", function () {
+      this.forceUpdate();
+    }, this);
   },
 
   componentWillUnmount: function() {

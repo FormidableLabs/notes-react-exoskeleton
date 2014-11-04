@@ -25,6 +25,11 @@ module.exports = {
     "jquery": "__NOOP",
     "underscore": "__NOOP"
   },
+  resolve: {
+    alias: {
+      "type": "type-of" // For `component-ajax`
+    }
+  },
   plugins: [
     // Optimize
     new webpack.optimize.DedupePlugin(),
