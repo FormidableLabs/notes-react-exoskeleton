@@ -16,6 +16,7 @@ React. The app uses:
 * Markdown JS for markdown conversion.
 * Bootstrap for CSS (not JS).
 * ES5 shim + sham for polyfills.
+* Standalone `$.ajax` replacement.
 
 Notably, the app does _not_ include:
 
@@ -79,11 +80,11 @@ $ gulp prod
 
 # Minified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-182637
+187324
 
 # Minified gzipped size
 $ curl -so /dev/null -w '%{size_download}\n' --compressed http://127.0.0.1:3000/app/js-dist/bundle.js
-55669
+57469
 ```
 
 And in dev (for a comparison):
@@ -93,12 +94,12 @@ $ gulp dev
 
 # Unminified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-820446
+831827
 ```
 
 [trav]: https://travis-ci.org/
-[trav_img]: https://api.travis-ci.org/FormidableLabs/notes-react-ampersand.svg
-[trav_site]: https://travis-ci.org/FormidableLabs/notes-react-ampersand
+[trav_img]: https://api.travis-ci.org/FormidableLabs/notes-react-exoskeleton.svg
+[trav_site]: https://travis-ci.org/FormidableLabs/notes-react-exoskeleton
 [react]: http://facebook.github.io/react/
 [cjs]: http://wiki.commonjs.org/wiki/CommonJS
 [webpack]: http://webpack.github.io/
