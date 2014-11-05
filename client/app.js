@@ -23,14 +23,12 @@ var collection = NotesCollection.getInstance();
 var _startApp = function () {
   var router = new Router();
 
-  // Manually check if pushstate available to avoid bad listeners set by
-  // Exoskeleton...
+  // Check if pushstate available to avoid bad listeners from Exoskeleton...
   // http://stackoverflow.com/questions/22781394
   var _havePushState = "history" in window && "pushState" in history;
 
   Backbone.history.start({
-    pushState: _havePushState,  // true
-    hashChange: !_havePushState // false
+    pushState: _havePushState
   });
 };
 
