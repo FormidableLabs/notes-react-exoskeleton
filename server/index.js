@@ -40,7 +40,6 @@ app.use("/bootstrap", express["static"]("node_modules/bootstrap/dist"));
 app.use("/css", express["static"]("app/css"));
 app.use("/es5-shim", express["static"]("node_modules/es5-shim"));
 app.use("/html5shiv", express["static"]("node_modules/html5shiv/dist"));
-app.use("/ie8", express["static"]("node_modules/ie8/build"));
 
 // ----------------------------------------------------------------------------
 // API
