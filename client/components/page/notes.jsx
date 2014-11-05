@@ -78,7 +78,7 @@ module.exports = React.createClass({
   // Add single child note view to end of notes list.
   addNote: function (note) {
     return (/*jshint ignore:start */
-      <NotesItem note={note} key={note.id} />
+      <NotesItem note={note} key={note.id || note.id === 0 ? note.id : note.cid} />
     /*jshint ignore:end */);
   },
 
