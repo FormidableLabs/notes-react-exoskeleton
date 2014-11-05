@@ -15,7 +15,7 @@ React. The app uses:
 * Exoskeleton for models, collections and routers.
 * Markdown JS for markdown conversion.
 * Bootstrap for CSS (not JS).
-* ES5 shim + sham for polyfills.
+* HTML5Shiv, ES5 shim + sham for polyfills.
 * Standalone `$.ajax` replacement.
 
 Notably, the app does _not_ include:
