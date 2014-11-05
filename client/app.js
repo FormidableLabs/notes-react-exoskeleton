@@ -3,6 +3,9 @@
  * Entry point.
  */
 /*jshint unused:false */
+/*globals global:true */ // TODO: Get shared code properly linted / defined.
+var root = typeof window !== "undefined" ? window : global;
+
 // Exoskeleton
 var Backbone = require("exoskeleton");
 var ajax = require("component-ajax");
@@ -25,7 +28,19 @@ var _startApp = function () {
 
   // Check if pushstate available to avoid bad listeners from Exoskeleton...
   // http://stackoverflow.com/questions/22781394
-  var _havePushState = "history" in window && "pushState" in history;
+  var _havePushState = "history" in root && "pushState" in root.history;
+
+  // Also, Exoskeleton has `addEventListener|removeEventListener` calls around
+  // `hashchange`, which we will narrowly polyfill here. Long term, look for
+  // a more robust solution.
+  // window.addEventListener('hashchange', this.checkUrl, false);
+  // window.removeEventListener('hashchange', this.checkUrl);
+  root.addEventListener = root.addEventListener || function (name, fn) {
+    root.attachEvent("on" + name, fn);
+  };
+  root.removeEventListener = root.removeEventListener || function (name, fn) {
+    root.detachEvent("on" + name, fn);
+  };
 
   Backbone.history.start({
     pushState: _havePushState
