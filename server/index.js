@@ -92,7 +92,9 @@ app["delete"]("/api/notes/:id", function (req, res) {
 // Helper for JSON injections.
 // See: http://benalpert.com/2012/08/03/preventing-xss-json.html
 var _toJSON = function (data) {
-  return JSON.stringify(data).replace(/<\//g, "<\\/");
+  return JSON.stringify(data)
+    .replace(/<\//g, "<\\/")
+    .replace(/<!--/g, "<\\!--");
 };
 
 // Mode helper.
