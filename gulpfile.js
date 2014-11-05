@@ -104,24 +104,28 @@ gulp.task("clean:dist", function () {
     .pipe(rimraf());
 });
 
-gulp.task("build:dist", _webpack(buildCfg, [
+gulp.task("build:dev", _webpack(buildCfg, [
   // Exclude optimize plugins.
   "DedupePlugin",
   "UglifyJsPlugin",
   "DefinePlugin"
 ]));
 
-gulp.task("watch:dist", function () {
+gulp.task("watch:dev", function () {
   gulp.watch([
     "client/**/*.{js,jsx}"
-  ], ["build:dist"]);
+  ], ["build:dev"]);
+});
+gulp.task("watch:prod", function () {
+  gulp.watch([
+    "client/**/*.{js,jsx}"
+  ], ["build:prod"]);
 });
 
-gulp.task("watch", ["watch:dist"]);
+gulp.task("watch", ["watch:dev"]);
 
-gulp.task("build:prod", ["clean:dist"], _webpack(buildCfg));
-
-gulp.task("build:dev",  ["build:dist"]);
+gulp.task("build:prod", _webpack(buildCfg));
+gulp.task("build:prod-full", ["clean:dist"], _webpack(buildCfg));
 
 // ----------------------------------------------------------------------------
 // Servers
@@ -149,7 +153,7 @@ gulp.task("server:sources", function () {
 // ----------------------------------------------------------------------------
 // Aggregations
 // ----------------------------------------------------------------------------
-gulp.task("dev",      ["build:dev", "watch", "server", "server:sources"]);
-gulp.task("prod",     ["build:prod", "server", "server:sources"]);
-gulp.task("build",    ["build:prod"]);
+gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
+gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
+gulp.task("build",    ["build:prod-full"]);
 gulp.task("default",  ["build:dev", "check"]);

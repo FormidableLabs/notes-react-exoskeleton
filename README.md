@@ -80,11 +80,11 @@ $ gulp prod
 
 # Minified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-187324
+170236
 
 # Minified gzipped size
 $ curl -so /dev/null -w '%{size_download}\n' --compressed http://127.0.0.1:3000/app/js-dist/bundle.js
-57469
+51695
 ```
 
 And in dev (for a comparison):
@@ -94,7 +94,7 @@ $ gulp dev
 
 # Unminified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-831827
+761157
 ```
 
 [trav]: https://travis-ci.org/

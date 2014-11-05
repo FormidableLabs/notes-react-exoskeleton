@@ -7,6 +7,7 @@ var compress = require("compression");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var sql = require("sqlite3");
+var UAParser = require("ua-parser-js");
 
 var app = express();
 var db = null;
@@ -93,7 +94,9 @@ app["delete"]("/api/notes/:id", function (req, res) {
 // Helper for JSON injections.
 // See: http://benalpert.com/2012/08/03/preventing-xss-json.html
 var _toJSON = function (data) {
-  return JSON.stringify(data).replace(/<\//g, "<\\/");
+  return JSON.stringify(data)
+    .replace(/<\//g, "<\\/")
+    .replace(/<!--/g, "<\\!--");
 };
 
 // Mode helper.
@@ -108,8 +111,21 @@ var _getMode = function (req) {
 // Render a page with special "content" function.
 var _renderPage = function (contentFn) {
   return function (req, res) {
-    if (_getMode(req) === "noss") {
-      // No server-side render.
+    // Detect IE9 and redirect with hash (ugh).
+    if (req.path !== "/") {
+      var parser = new UAParser(req.headers["user-agent"]);
+      var userAgent = parser.getResult();
+      if (userAgent && userAgent.browser.name === "IE" &&
+          parseInt(userAgent.browser.major, 10) <= 9) {
+        // Redirect with hash part.
+        // **Note**: Will get invalid React Checksum and IE9 "restart from
+        // quirks mode" warning.
+        return res.redirect("/" + req.path.replace(/^\//, "#"));
+      }
+    }
+
+    // No server-side render from mode.
+    if (_getMode(req) === "noss" ) {
       return res.render("index", { layout: false });
     }
 
