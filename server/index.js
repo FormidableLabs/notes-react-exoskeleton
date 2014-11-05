@@ -36,6 +36,8 @@ app.use("/app/js-dist/*.map", function (req, res) {
 });
 app.use("/app/js-dist", express["static"]("app/js-dist"));
 app.use("/bootstrap", express["static"]("node_modules/bootstrap/dist"));
+app.use("/ie8", express["static"]("node_modules/ie8/build"));
+app.use("/html5shiv", express["static"]("node_modules/html5shiv/dist"));
 app.use("/css", express["static"]("app/css"));
 
 // ----------------------------------------------------------------------------
