@@ -7,6 +7,7 @@ var compress = require("compression");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var sql = require("sqlite3");
+var UAParser = require("ua-parser-js");
 
 var app = express();
 var db = null;
@@ -106,8 +107,21 @@ var _getMode = function (req) {
 // Render a page with special "content" function.
 var _renderPage = function (contentFn) {
   return function (req, res) {
-    if (_getMode(req) === "noss") {
-      // No server-side render.
+    // Detect IE9 and redirect with hash (ugh).
+    if (req.path !== "/") {
+      var parser = new UAParser(req.headers["user-agent"]);
+      var userAgent = parser.getResult();
+      if (userAgent && userAgent.browser.name === "IE" &&
+          parseInt(userAgent.browser.major, 10) <= 9) {
+        // Redirect with hash part.
+        // **Note**: Will get invalid React Checksum and IE9 "restart from
+        // quirks mode" warning.
+        return res.redirect("/" + req.path.replace(/^\//, "#"));
+      }
+    }
+
+    // No server-side render from mode.
+    if (_getMode(req) === "noss" ) {
       return res.render("index", { layout: false });
     }
 

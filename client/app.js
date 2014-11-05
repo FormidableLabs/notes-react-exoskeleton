@@ -3,11 +3,6 @@
  * Entry point.
  */
 /*jshint unused:false */
-// TODO: Move all this to common place?
-// Polyfills (ie8 compatibility).
-require("es5-shim/es5-shim");
-require("es5-shim/es5-sham");
-
 // Exoskeleton
 var Backbone = require("exoskeleton");
 var ajax = require("component-ajax");
@@ -27,9 +22,15 @@ var collection = NotesCollection.getInstance();
 // Helper: Start up app.
 var _startApp = function () {
   var router = new Router();
+
+  // Manually check if pushstate available to avoid bad listeners set by
+  // Exoskeleton...
+  // http://stackoverflow.com/questions/22781394
+  var _havePushState = "history" in window && "pushState" in history;
+
   Backbone.history.start({
-    pushState: true,
-    hashChange: false
+    pushState: _havePushState,  // true
+    hashChange: !_havePushState // false
   });
 };
 
