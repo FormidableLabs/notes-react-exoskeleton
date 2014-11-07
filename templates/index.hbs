@@ -16,9 +16,9 @@
     <![endif]-->
   </head>
   <body>
-    <div id="content" class="notes-html">{{{content}}}</div>
+    <div class="js-content">{{{content}}}</div>
     {{~#unless noJs~}}
-      <script id="initial-data" type="application/json">{{{initialData}}}</script>
+      <script class="js-initial-data" type="application/json">{{{initialData}}}</script>
       <script src="/app/js-dist/bundle.js"></script>
     {{~/unless~}}
   </body>

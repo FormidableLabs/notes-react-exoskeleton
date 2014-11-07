@@ -51,7 +51,7 @@ var _startApp = function () {
 // Bootstrap / Initialization
 // ----------------------------------------------------------------------------
 // Initial data from page.
-var initialDataEl = document.getElementById("initial-data");
+var initialDataEl = document.querySelector(".js-initial-data");
 var initialData;
 if (initialDataEl) {
   try {

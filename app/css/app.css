@@ -52,7 +52,7 @@ table.notes-list td.note-action {
   border-top: 1px solid #dddddd;
 }
 .table-curved th,
-table.notes-list tr.notes-new td {
+table.notes-list tr:first-child td {
   border-top: none;
 }
 .table-curved th:first-child {
