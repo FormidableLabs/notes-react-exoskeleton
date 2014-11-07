@@ -72,7 +72,7 @@ table.notes-list tr.notes-new td {
 }
 
 /* Notes View - "Add new note" input. */
-input#note-new-input {
+input.note-new-input {
   width: 100%;
   border: none;
   background: inherit;
@@ -82,10 +82,10 @@ input#note-new-input {
   -o-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
-input#note-new-input::-webkit-input-placeholder {
+input.note-new-input::-webkit-input-placeholder {
   font-style: italic;
 }
-input#note-new-input:-moz-placeholder {
+input.note-new-input:-moz-placeholder {
   font-style: italic;
   color: #a9a9a9;
 }

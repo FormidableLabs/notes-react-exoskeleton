@@ -100,7 +100,7 @@ module.exports = React.createClass({
             <tbody>
               <tr className="notes-new">
                 <td className="note-name">
-                  <input className="form-control"
+                  <input className="form-control note-new-input"
                          data-qa-name="note-new-input"
                          placeholder="Write a new note."
                          value={this.state.newNote}
