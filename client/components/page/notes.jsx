@@ -95,8 +95,8 @@ module.exports = React.createClass({
 
     return (/*jshint ignore:start */
       <Base>
-        <div id="notes">
-          <table className="table table-curved table-hover notes-list">
+        <div className="panel panel-default">
+          <table className="table table-bordered table-hover notes-list">
             <tbody>
               <tr>
                 <td>
