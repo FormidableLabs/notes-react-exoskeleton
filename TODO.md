@@ -5,6 +5,10 @@ Tasks
 
 * Start `notes-func-test` for impl-independent functional tests (hook to dev. server + sqlite in memory.)
 
+## Dev
+
+* Selectors: Switch all over to `js-`, `qa-`
+
 ## Later
 
 * Gulp: Switch to jsxhint or maybe eslint?

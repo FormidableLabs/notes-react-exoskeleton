@@ -96,11 +96,12 @@ module.exports = React.createClass({
     return (/*jshint ignore:start */
       <Base>
         <div id="notes">
-          <table id="notes-list" className="table table-curved table-hover">
+          <table className="table table-curved table-hover notes-list">
             <tbody>
               <tr className="notes-new">
                 <td className="note-name">
                   <input className="form-control"
+                         data-qa-name="note-new-input"
                          placeholder="Write a new note."
                          value={this.state.newNote}
                          onKeyPress={this.enterNote}
@@ -108,8 +109,8 @@ module.exports = React.createClass({
                          autofocus />
                 </td>
                 <td className="note-action">
-                  <button id="note-create"
-                          type="button"
+                  <button type="button"
+                          data-qa-name="note-new-create"
                           className="btn btn-default btn-sm pull-right"
                           onClick={this.createNote}>
                     <span className="glyphicon glyphicon-plus"></span>

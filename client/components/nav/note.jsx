@@ -45,7 +45,7 @@ module.exports = React.createClass({
   render: function () {
     return (/*jshint ignore:start */
       <Base>
-        <ul id="note-nav" className="nav navbar-nav">
+        <ul className="nav navbar-nav note-nav">
           <li className={"note-view" + (this.props.action === "view" ? " active" : "")}>
             <a href="#" onClick={this.viewNote}>
               <span className="glyphicon glyphicon-file"></span>

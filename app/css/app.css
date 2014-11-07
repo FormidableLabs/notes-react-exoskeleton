@@ -4,7 +4,7 @@ body {
 }
 
 /* Nav bar */
-#note-nav a span {
+.note-nav a span {
   opacity: 0.85;
 }
 
@@ -19,23 +19,23 @@ body {
 }
 
 /* Notes View - Table Listing of Notes */
-table#notes-list {
+table.notes-list {
   width: 100%;
 }
-table#notes-list td {
+table.notes-list td {
   padding: 0.5em;
   vertical-align: middle;
   border-right: none;
   border-left: none;
 }
-table#notes-list td .note-title {
+table.notes-list td .note-title {
   font-weight: bold;
   font-size: 1.1em;
   color: #3a3a3a;
   cursor: pointer;
   text-decoration: none;
 }
-table#notes-list td.note-action {
+table.notes-list td.note-action {
   width: 95px;
 }
 
@@ -52,7 +52,7 @@ table#notes-list td.note-action {
   border-top: 1px solid #dddddd;
 }
 .table-curved th,
-table#notes-list tr.notes-new td {
+table.notes-list tr.notes-new td {
   border-top: none;
 }
 .table-curved th:first-child {
