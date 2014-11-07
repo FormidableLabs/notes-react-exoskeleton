@@ -98,8 +98,8 @@ module.exports = React.createClass({
         <div id="notes">
           <table className="table table-curved table-hover notes-list">
             <tbody>
-              <tr className="notes-new">
-                <td className="note-name">
+              <tr>
+                <td>
                   <input className="form-control note-new-input"
                          data-qa-name="note-new-input"
                          placeholder="Write a new note."

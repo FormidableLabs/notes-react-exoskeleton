@@ -29,9 +29,10 @@ module.exports = React.createClass({
   render: function () {
     return (/*jshint ignore:start */
       <Base>
-      {this.props.action === "view" ?
-        <NoteView note={this.props.note} /> :
-        <NoteEdit note={this.props.note} />}
+        {this.props.action === "view" ?
+          <NoteView note={this.props.note} /> :
+          <NoteEdit note={this.props.note} />
+        }
       </Base>
     /*jshint ignore:end */);
   }

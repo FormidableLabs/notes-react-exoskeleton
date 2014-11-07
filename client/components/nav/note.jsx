@@ -46,19 +46,19 @@ module.exports = React.createClass({
     return (/*jshint ignore:start */
       <Base>
         <ul className="nav navbar-nav note-nav">
-          <li className={"note-view" + (this.props.action === "view" ? " active" : "")}>
+          <li className={this.props.action === "view" ? " active" : ""}>
             <a href="#" onClick={this.viewNote}>
               <span className="glyphicon glyphicon-file"></span>
               <span className="hidden-phone-portrait">View</span>
             </a>
           </li>
-          <li className={"note-edit" + (this.props.action === "edit" ? " active" : "")}>
+          <li className={this.props.action === "edit" ? "active" : ""}>
             <a href="#" onClick={this.editNote}>
               <span className="glyphicon glyphicon-pencil"></span>
               <span className="hidden-phone-portrait">Edit</span>
             </a>
           </li>
-          <li className="note-delete">
+          <li>
             <a href="#" onClick={this.deleteNote}>
               <span className="glyphicon glyphicon-trash"></span>
               <span className="hidden-phone-portrait">Delete</span>
