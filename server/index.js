@@ -173,13 +173,37 @@ app.get("/note/:id/:action", _renderPage(function (notesCol, req, res) {
 }));
 
 // ----------------------------------------------------------------------------
-// Bootstrap
+// Start
 // ----------------------------------------------------------------------------
-db = new sql.Database(DB_PATH, sql.OPEN_READWRITE, function (err) {
-  if (err) {
-    global.console.log("DB ERROR", err);
-    throw err;
+var start = function (opts, callback) {
+  callback = callback || function () {};
+  opts = opts || {};
+  opts.port = opts.port || PORT;
+  opts.dbPath = opts.dbPath || DB_PATH;
+
+  // Reuse existing db.
+  if (opts.db) {
+    db = opts.db;
+    app.listen(opts.port, callback);
+    return;
   }
 
-  app.listen(PORT);
-});
+  // Need to init the db.
+  db = new sql.Database(opts.dbPath, sql.OPEN_READWRITE, function (err) {
+    if (err) {
+      global.console.log("DB ERROR", err);
+      throw err;
+    }
+
+    app.listen(opts.port, callback);
+  });
+};
+
+module.exports = {
+  start: start
+};
+
+// Script. Use defaults (init dev. database).
+if (require.main === module) {
+  start();
+}

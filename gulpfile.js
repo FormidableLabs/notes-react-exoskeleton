@@ -40,6 +40,7 @@ gulp.task("jshint:backend", function () {
     .src([
       "scripts/**/*.js",
       "server/**/*.js",
+      "test/**/*.js",
       "*.js"
     ])
     .pipe(jshint(_jsonCfg(".jshint-backend.json")))

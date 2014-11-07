@@ -9,21 +9,21 @@ var TABLE_NAME = "notes";
 var ROWS = "(id integer primary key autoincrement, title text, text text)";
 var CB = function (err) { if (err) { throw err; } };
 
+var db;
+
 var init = module.exports = function (dbPath, callback) {
   dbPath = typeof dbPath !== "undefined" ? dbPath : DB_PATH;
   callback = callback || CB;
 
-  var db = new sql.Database(dbPath, OPEN_STATE, function (err) {
+  db = new sql.Database(dbPath, OPEN_STATE, function (err) {
     if (err) {
-      db.close();
       return callback(err);
     }
 
     db.run("drop table if exists " + TABLE_NAME, function (err) {
       if (err) { return callback(err); }
       db.run("create table " + TABLE_NAME + " " + ROWS, function (err) {
-        db.close();
-        callback(err);
+        callback(err, db);
       });
     });
   });
@@ -32,9 +32,8 @@ var init = module.exports = function (dbPath, callback) {
 // Script. Use defaults (init dev. database).
 if (require.main === module) {
   init(DB_PATH, function (err) {
-    if (err) {
-      console.log("ERROR: ", err);
-    }
+    if (err)  { console.log("ERROR: ", err); }
+    if (db)   { db.close(); }
     console.log("Finished initialization of: " + DB_PATH);
   });
 }
