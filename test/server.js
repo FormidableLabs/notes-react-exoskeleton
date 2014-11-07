@@ -5,6 +5,7 @@ var server = require("../server/index");
 initDb(":memory:", function (err, db) {
   if (err) { throw err; }
   server.start({
-    db: db
+    db: db,
+    port: process.env.PORT || 3002
   });
 });
