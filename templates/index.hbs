@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <!--[if IE 8]>
-      <script src="/html5shiv/html5shiv.min.js"></script>
-      <script src="/es5-shim/es5-shim.min.js"></script>
-      <script src="/es5-shim/es5-sham.min.js"></script>
+    <script src="/html5shiv/html5shiv.min.js"></script>
+    <script src="/es5-shim/es5-shim.min.js"></script>
+    <script src="/es5-shim/es5-sham.min.js"></script>
     <![endif]-->
   </head>
   <body>
@@ -20,6 +20,9 @@
     {{~#unless noJs~}}
       <script class="js-initial-data" type="application/json">{{{initialData}}}</script>
       <script src="/app/js-dist/bundle.js"></script>
+      <!--[if lte IE 9]>{{!-- http://jamesallardice.github.io/Placeholders.js/ --}}
+      <script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script>
+      <![endif]-->
     {{~/unless~}}
   </body>
 </html>
