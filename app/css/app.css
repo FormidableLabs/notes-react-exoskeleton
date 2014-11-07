@@ -73,6 +73,7 @@ textarea.input-text {
 
 /*
  * Copy of navbar-form in non-responsive form.
+ * Needed for filter query form alignment.
  */
 .navbar-form-nonresp {
   padding-top: 8px;
