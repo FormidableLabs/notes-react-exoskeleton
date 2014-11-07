@@ -64,10 +64,10 @@ input.note-new-input:-moz-placeholder {
   color: #a9a9a9;
 }
 
-input#input-title {
+input.input-title {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
-textarea#input-text {
+textarea.input-text {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 
