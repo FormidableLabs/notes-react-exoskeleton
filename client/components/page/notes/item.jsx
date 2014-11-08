@@ -30,9 +30,11 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   render: function () {
     return (/*jshint ignore:start */
-      <tr id={this.props.note.id}>
+      <tr id={this.props.note.id}
+          data-qa-name="note-item">
         <td>
           <a className="note-title"
+             data-qa-name="note-item-title"
              href={"/note/" + this.props.note.id + "/view"}
              onClick={this.viewNote}>
             {this.props.note.get("title")}
@@ -45,6 +47,7 @@ module.exports = React.createClass({
               <span className="glyphicon glyphicon-pencil"></span>
             </button>
             <button className="btn btn-default"
+                    data-qa-name="note-item-delete"
                     onClick={this.deleteNote}>
               <span className="glyphicon glyphicon-trash"></span>
             </button>

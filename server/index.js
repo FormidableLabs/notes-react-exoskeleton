@@ -62,6 +62,10 @@ app.get("/api/notes", function (req, res) {
   _getAllNotes(_errOrData(res));
 });
 
+app["delete"]("/api/notes", function (req, res) {
+  db.run("delete from notes", _errOrData(res, {}));
+});
+
 app.post("/api/notes", function (req, res) {
   var title = req.body.title || "",
     text = req.body.text || "";
