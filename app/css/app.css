@@ -28,14 +28,14 @@ table.notes-list td {
   border-right: none;
   border-left: none;
 }
-table.notes-list td .note-title {
+table.notes-list td .notes-item-title {
   font-weight: bold;
   font-size: 1.1em;
   color: #3a3a3a;
   cursor: pointer;
   text-decoration: none;
 }
-table.notes-list td.note-action {
+table.notes-list td.notes-item-action {
   width: 95px;
 }
 
@@ -46,7 +46,7 @@ table.notes-list td.note-action {
 }
 
 /* Notes View - "Add new note" input. */
-input.note-new-input {
+input.notes-new-input {
   width: 100%;
   border: none;
   background: inherit;
@@ -56,18 +56,17 @@ input.note-new-input {
   -o-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
-input.note-new-input::-webkit-input-placeholder {
+input.notes-new-input::-webkit-input-placeholder {
   font-style: italic;
 }
-input.note-new-input:-moz-placeholder {
+input.notes-new-input:-moz-placeholder {
   font-style: italic;
   color: #a9a9a9;
 }
 
-input.input-title {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-}
-textarea.input-text {
+/* Note View - Editing. */
+input.note-edit-title,
+textarea.note-edit-text {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 

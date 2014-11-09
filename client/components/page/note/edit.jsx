@@ -46,14 +46,15 @@ module.exports = React.createClass({
       <div>
         <form role="form">
           <div className="form-group">
-            <input className="form-control input-title"
+            <input className="form-control note-edit-title"
+                   data-qa-name="note-edit-title"
                    type="text" placeholder="title"
                    onChange={this.updateTitle}
                    onBlur={this.saveNote}
                    value={this.state.title} />
           </div>
           <div className="form-group">
-            <textarea className="form-control input-text"
+            <textarea className="form-control note-edit-text"
                       rows="15"
                       onChange={this.updateText}
                       onBlur={this.saveNote}

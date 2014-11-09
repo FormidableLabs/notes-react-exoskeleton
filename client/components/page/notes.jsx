@@ -108,17 +108,17 @@ module.exports = React.createClass({
             <tbody>
               <tr>
                 <td>
-                  <input className="form-control note-new-input"
-                         data-qa-name="note-new-input"
+                  <input className="form-control notes-new-input"
+                         data-qa-name="notes-new-input"
                          placeholder="Write a new note."
                          value={this.state.newNote}
                          onKeyPress={this.enterNote}
                          onChange={this.updateNewNote}
                          autofocus />
                 </td>
-                <td className="note-action">
+                <td className="notes-item-action">
                   <button type="button"
-                          data-qa-name="note-new-create"
+                          data-qa-name="notes-new-create"
                           className="btn btn-default btn-sm pull-right"
                           onClick={this.createNote}>
                     <span className="glyphicon glyphicon-plus"></span>
