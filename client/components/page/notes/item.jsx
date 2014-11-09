@@ -35,7 +35,7 @@ module.exports = React.createClass({
         <td>
           <a className="note-title"
              data-qa-name="note-item-title"
-             href={"/note/" + this.props.note.id + "/view"}
+             href={this.props.note.id ? "/note/" + this.props.note.id + "/view" : "#"}
              onClick={this.viewNote}>
             {this.props.note.get("title")}
           </a>

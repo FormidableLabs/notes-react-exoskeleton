@@ -115,8 +115,10 @@ var _getMode = function (req) {
 // Render a page with special "content" function.
 var _renderPage = function (contentFn) {
   return function (req, res) {
-    // Detect IE9 and redirect with hash (ugh).
-    if (req.path !== "/") {
+    var mode = _getMode(req);
+
+    // Detect IE and redirect with hash (ugh).
+    if (req.path !== "/" && mode !== "nojs") {
       var parser = new UAParser(req.headers["user-agent"]);
       var userAgent = parser.getResult();
       if (userAgent && userAgent.browser.name === "IE" &&
@@ -129,7 +131,7 @@ var _renderPage = function (contentFn) {
     }
 
     // No server-side render from mode.
-    if (_getMode(req) === "noss" ) {
+    if (mode === "noss") {
       return res.render("index", { layout: false });
     }
 
@@ -148,7 +150,7 @@ var _renderPage = function (contentFn) {
       // Render with bootstrapped data.
       res.render("index", {
         layout: false,
-        noJs: _getMode(req) === "nojs",
+        noJs: mode === "nojs",
         initialData: _toJSON(notesCol.toJSON()),
         content: content
       });

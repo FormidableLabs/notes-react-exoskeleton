@@ -47,13 +47,15 @@ module.exports = React.createClass({
       <Base>
         <ul className="nav navbar-nav note-nav">
           <li className={this.props.action === "view" ? " active" : ""}>
-            <a href="#" onClick={this.viewNote}>
+            <a href={this.props.note.id ? "/note/" + this.props.note.id + "/view" : "#"}
+               onClick={this.viewNote}>
               <span className="glyphicon glyphicon-file"></span>
               <span className="hidden-phone-portrait">View</span>
             </a>
           </li>
           <li className={this.props.action === "edit" ? "active" : ""}>
-            <a href="#" onClick={this.editNote}>
+            <a href={this.props.note.id ? "/note/" + this.props.note.id + "/edit" : "#"}
+               onClick={this.editNote}>
               <span className="glyphicon glyphicon-pencil"></span>
               <span className="hidden-phone-portrait">Edit</span>
             </a>
