@@ -11,6 +11,10 @@ Tasks
     * Move deps to there and get servers to start for both repos.
     * Hook up Travis.
 
+## App
+
+* Consider cases of when `id` is not set for things like navigation.
+
 ## Later
 
 * Gulp: Switch to jsxhint or maybe eslint?

@@ -21,7 +21,10 @@ module.exports = React.createClass({
   //       todomvc-backbone/js/app.js#L148-L171
   componentDidMount: function() {
     // [BB] Add forceUpdate bindings.
-    this.props.notes.on("add remove", function () {
+    // Adding a model with have two actual force updates:
+    // (1) On `add` without an `id` from the server.
+    // (2) On `sync` when the server responds with new `id`.
+    this.props.notes.on("add remove sync", function () {
       this.forceUpdate();
     }, this);
   },
