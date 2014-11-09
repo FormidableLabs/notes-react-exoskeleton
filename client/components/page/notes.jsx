@@ -58,6 +58,11 @@ module.exports = React.createClass({
   },
 
   createNote: function (ev) {
+    // Short-circuit if empty note.
+    if (!this.state.newNote) {
+      return;
+    }
+
     // [BB] Create a note model.
     this.props.notes.create({ title: this.state.newNote });
     this.setState({ newNote: "" });
