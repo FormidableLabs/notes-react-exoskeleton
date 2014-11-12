@@ -43,18 +43,18 @@ module.exports = React.createClass({
         </td>
         <td className="notes-item-action">
           <div className="btn-group btn-group-sm pull-right">
-            <button className="btn btn-default"
-                    data-qa-name="notes-item-edit"
-                    onClick={this.editNote}>
+            <div className="btn btn-default"
+                 data-qa-name="notes-item-edit"
+                 onClick={this.editNote}>
               <a className="glyphicon glyphicon-pencil"
                  href={this.props.note.id ? "/note/" + this.props.note.id + "/edit" : "#"}
                  ></a>
-            </button>
-            <button className="btn btn-default"
-                    data-qa-name="notes-item-delete"
-                    onClick={this.deleteNote}>
+            </div>
+            <div className="btn btn-default"
+                 data-qa-name="notes-item-delete"
+                 onClick={this.deleteNote}>
               <span className="glyphicon glyphicon-trash"></span>
-            </button>
+            </div>
           </div>
         </td>
       </tr>

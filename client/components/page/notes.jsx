@@ -117,12 +117,11 @@ module.exports = React.createClass({
                          autofocus />
                 </td>
                 <td className="notes-item-action">
-                  <button type="button"
-                          data-qa-name="notes-new-create"
-                          className="btn btn-default btn-sm pull-right"
-                          onClick={this.createNote}>
+                  <div data-qa-name="notes-new-create"
+                       className="btn btn-default btn-sm pull-right"
+                       onClick={this.createNote}>
                     <span className="glyphicon glyphicon-plus"></span>
-                  </button>
+                  </div>
                 </td>
               </tr>
               {noteNodes}
