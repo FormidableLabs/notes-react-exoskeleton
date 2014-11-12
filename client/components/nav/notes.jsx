@@ -33,7 +33,8 @@ module.exports = React.createClass({
         <form className="nav navbar-nav navbar-right navbar-form-nonresp navbar-search"
               role="search">
           <div className="form-group">
-            <input type="text" className="search-query form-control"
+            <input type="text" className="notes-filter form-control"
+                   data-qa-name="notes-filter"
                    onChange={this.updateFilter}
                    placeholder="Filter" />
           </div>

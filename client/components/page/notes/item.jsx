@@ -17,7 +17,8 @@ module.exports = React.createClass({
     Backbone.history.navigate(
       "note/" + this.props.note.id + "/view", { trigger: true });
   },
-  editNote: function () {
+  editNote: function (ev) {
+    ev.preventDefault();
     Backbone.history.navigate(
       "note/" + this.props.note.id + "/edit", { trigger: true });
   },
@@ -45,7 +46,9 @@ module.exports = React.createClass({
             <button className="btn btn-default"
                     data-qa-name="notes-item-edit"
                     onClick={this.editNote}>
-              <span className="glyphicon glyphicon-pencil"></span>
+              <a className="glyphicon glyphicon-pencil"
+                 href={this.props.note.id ? "/note/" + this.props.note.id + "/edit" : "#"}
+                 ></a>
             </button>
             <button className="btn btn-default"
                     data-qa-name="notes-item-delete"

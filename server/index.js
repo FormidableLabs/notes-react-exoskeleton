@@ -14,6 +14,10 @@ var db = null;
 var DB_PATH = __dirname + "/notes.sqlite";
 var PORT = process.env.PORT || 3000;
 
+// Dev-only overrides.
+var NO_SERVER_SIDE = false;
+var NO_JS = false;
+
 // Client
 var React = require("react");
 var NotesView = React.createFactory(require("../client/components/notes.jsx"));
@@ -118,7 +122,7 @@ var _renderPage = function (contentFn) {
     var mode = _getMode(req);
 
     // Detect IE and redirect with hash (ugh).
-    if (req.path !== "/" && mode !== "nojs") {
+    if (req.path !== "/" && !(mode === "nojs" || NO_JS)) {
       var parser = new UAParser(req.headers["user-agent"]);
       var userAgent = parser.getResult();
       if (userAgent && userAgent.browser.name === "IE" &&
@@ -131,7 +135,7 @@ var _renderPage = function (contentFn) {
     }
 
     // No server-side render from mode.
-    if (mode === "noss") {
+    if (mode === "noss" || NO_SERVER_SIDE) {
       return res.render("index", { layout: false });
     }
 
@@ -150,7 +154,7 @@ var _renderPage = function (contentFn) {
       // Render with bootstrapped data.
       res.render("index", {
         layout: false,
-        noJs: mode === "nojs",
+        noJs: mode === "nojs" || NO_JS,
         initialData: _toJSON(notesCol.toJSON()),
         content: content
       });

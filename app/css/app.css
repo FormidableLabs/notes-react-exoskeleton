@@ -10,7 +10,7 @@ body {
 
 /* (Sort-of) iPhone Portrait (usually 320px). */
 @media (max-width: 390px) {
-  .navbar-search .search-query {
+  .navbar-search .notes-filter {
     width: 110px;
   }
   .hidden-phone-portrait {
@@ -37,6 +37,10 @@ table.notes-list td .notes-item-title {
 }
 table.notes-list td.notes-item-action {
   width: 95px;
+}
+table.notes-list a.glyphicon {
+  color: #3a3a3a;
+  text-decoration: none;
 }
 
 /* From: http://stackoverflow.com/questions/18729638 */
