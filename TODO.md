@@ -19,4 +19,3 @@ Tasks
 
 * Gulp: Switch to jsxhint or maybe eslint?
 * Make sure tests pass.
-* Implement / switch LS/no-server-side for `gh-pages` vs normal.
