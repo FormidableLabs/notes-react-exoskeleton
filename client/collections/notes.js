@@ -4,9 +4,10 @@ var Backbone = require("exoskeleton");
 var NoteModel = require("../models/note");
 
 // Build state.
-var useLS = process.env.BUILD_LOCALSTORAGE === "true";
+Backbone.LocalStorage = process.env.BUILD_LOCALSTORAGE === "true" ?
+  require("backbone.localstorage") : null;
+var useLS = !!Backbone.LocalStorage;
 var useRest = !useLS;
-Backbone.LocalStorage = useLS ? require("backbone.localstorage") : null;
 
 // Class declaration.
 var NotesCollection = Backbone.Collection.extend({
