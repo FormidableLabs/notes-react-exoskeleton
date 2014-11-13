@@ -7,6 +7,7 @@
 /*jshint unused:false */
 var React = require("react");
 var Backbone = require("exoskeleton");
+var _ = Backbone.utils;
 var Base = require("./base.jsx");
 var NotesItem = require("./notes/item.jsx");
 
@@ -97,8 +98,7 @@ module.exports = React.createClass({
       return this.isMatch(this.props.filter, m.get("title"));
     }, this);
 
-    noteNodes = Backbone.utils
-      .sortBy(noteNodes, function (m) { return m.get("createdAt"); })
+    noteNodes = _.sortBy(noteNodes, function (m) { return m.get("createdAt"); })
       .map(this.addNote, this);
 
     return (/*jshint ignore:start */

@@ -61,13 +61,20 @@ gulp.task("check:all",  ["jshint"]);
 // Builders
 // ----------------------------------------------------------------------------
 // Create webpack task.
-var _webpack = function (cfg, pluginExcludes) {
+var _webpack = function (cfg, pluginExcludes, pluginExtras) {
   // Filter plugins by constructor name.
   if (pluginExcludes) {
     cfg = _.extend({}, cfg, {
       plugins: _.reject(cfg.plugins, function (plugin) {
         return _.indexOf(pluginExcludes, plugin.constructor.name) !== -1;
       })
+    });
+  }
+
+  // Now add plugin extras to front.
+  if (pluginExtras) {
+    cfg = _.extend({}, cfg, {
+      plugins: pluginExtras.concat(cfg.plugins)
     });
   }
 
@@ -90,7 +97,7 @@ var _webpack = function (cfg, pluginExcludes) {
 };
 
 // -----------
-// Development
+// Cleaning
 // -----------
 gulp.task("clean:all", function () {
   return gulp
@@ -105,28 +112,54 @@ gulp.task("clean:dist", function () {
     .pipe(rimraf());
 });
 
+// -----------
+// Development
+// -----------
 gulp.task("build:dev", _webpack(buildCfg, [
   // Exclude optimize plugins.
   "DedupePlugin",
   "UglifyJsPlugin",
   "DefinePlugin"
 ]));
-
 gulp.task("watch:dev", function () {
   gulp.watch([
     "client/**/*.{js,jsx}"
   ], ["build:dev"]);
 });
+gulp.task("watch", ["watch:dev"]);
+
+// -----------
+// Production
+// -----------
+gulp.task("build:prod", _webpack(buildCfg));
+gulp.task("build:prod-full", ["clean:dist"], _webpack(buildCfg));
 gulp.task("watch:prod", function () {
   gulp.watch([
     "client/**/*.{js,jsx}"
   ], ["build:prod"]);
 });
 
-gulp.task("watch", ["watch:dev"]);
-
-gulp.task("build:prod", _webpack(buildCfg));
-gulp.task("build:prod-full", ["clean:dist"], _webpack(buildCfg));
+// -----------
+// LocalStorage
+// -----------
+gulp.task("build:ls", _webpack(buildCfg, [
+  // Exclude optimize plugins.
+  "DedupePlugin",
+  "UglifyJsPlugin",
+  "DefinePlugin"
+], [
+  // Plugin replacements.
+  new webpack.DefinePlugin({
+    "process.env": {
+      BUILD_LOCALSTORAGE: JSON.stringify("true")
+    }
+  })
+]));
+gulp.task("watch:ls", function () {
+  gulp.watch([
+    "client/**/*.{js,jsx}"
+  ], ["build:ls"]);
+});
 
 // ----------------------------------------------------------------------------
 // Servers
@@ -154,6 +187,7 @@ gulp.task("server:sources", function () {
 // ----------------------------------------------------------------------------
 // Aggregations
 // ----------------------------------------------------------------------------
+gulp.task("ls",       ["build:ls", "watch:ls", "server:sources"]);
 gulp.task("dev",      ["build:dev", "watch:dev", "server", "server:sources"]);
 gulp.task("prod",     ["build:prod", "watch:prod", "server", "server:sources"]);
 gulp.task("build",    ["build:prod-full"]);

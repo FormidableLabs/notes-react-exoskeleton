@@ -3,12 +3,13 @@
   "version": "0.0.3",
   "description": "Notes application (React/Exoskeleton)",
   "dependencies": {
+    "backbone.localstorage": "1.1.13",
     "body-parser": "1.2.0",
     "bootstrap": "3.1.1",
     "component-ajax": "0.0.2",
     "compression": "1.2.0",
-    "exoskeleton": "0.7.0",
     "es5-shim": "4.0.3",
+    "exoskeleton": "0.7.0",
     "express": "4.2.0",
     "express-handlebars": "1.1.0",
     "html5shiv": "3.7.2",
@@ -35,6 +36,7 @@
   "scripts": {
     "test": "gulp build check",
     "build": "webpack --config webpack.config.js",
+    "build-localstorage": "BUILD_LOCALSTORAGE=true webpack --config webpack.config.js",
     "init-db": "node server/init-db.js",
     "shrink": "rm -f npm-shrinkwrap.json && npm shrinkwrap --dev"
   }

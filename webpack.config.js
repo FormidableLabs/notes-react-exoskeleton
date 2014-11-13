@@ -4,6 +4,8 @@
 
 var path = require("path");
 var webpack = require("webpack");
+var useLocalStorage = process.env.BUILD_LOCALSTORAGE === "true" ?
+  "true" : "false";
 
 module.exports = {
   cache: true,
@@ -27,7 +29,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "type": "type-of" // For `component-ajax`
+      "type": "type-of", // For `component-ajax`
+      "backbone": "exoskeleton"
     }
   },
   plugins: [
@@ -35,8 +38,11 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.DefinePlugin({
-      "process.env": { // Signal production mode for React JS libs.
-        NODE_ENV: JSON.stringify("production")
+      "process.env": {
+        // Signal production mode for React JS libs.
+        NODE_ENV: JSON.stringify("production"),
+        // Proxy env variable for LS build.
+        BUILD_LOCALSTORAGE: JSON.stringify(useLocalStorage)
       }
     }),
     // Manually do source maps to use alternate host.

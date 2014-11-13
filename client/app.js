@@ -30,6 +30,9 @@ var _startApp = function () {
   // http://stackoverflow.com/questions/22781394
   var _havePushState = "history" in root && "pushState" in root.history;
 
+  // Check if we _want_ to use pushstate.
+  var _usePushState = process.env.BUILD_LOCALSTORAGE !== "true";
+
   // Also, Exoskeleton has `addEventListener|removeEventListener` calls around
   // `hashchange`, which we will narrowly polyfill here. Long term, look for
   // a more robust solution.
@@ -43,7 +46,7 @@ var _startApp = function () {
   };
 
   Backbone.history.start({
-    pushState: _havePushState
+    pushState: _havePushState && _usePushState
   });
 };
 
