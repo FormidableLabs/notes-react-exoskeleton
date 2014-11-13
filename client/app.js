@@ -3,9 +3,6 @@
  * Entry point.
  */
 /*jshint unused:false */
-/*globals global:true */ // TODO: Get shared code properly linted / defined.
-var root = typeof window !== "undefined" ? window : global;
-
 // Exoskeleton
 var Backbone = require("exoskeleton");
 var ajax = require("component-ajax");
@@ -24,6 +21,8 @@ var collection = NotesCollection.getInstance();
 // ----------------------------------------------------------------------------
 // Helper: Start up app.
 var _startApp = function () {
+  /*globals global:true, process:false */
+  var root = typeof window !== "undefined" ? window : global;
   var router = new Router();
 
   // Check if pushstate available to avoid bad listeners from Exoskeleton...
