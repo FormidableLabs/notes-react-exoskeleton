@@ -4,8 +4,7 @@
 
 var path = require("path");
 var webpack = require("webpack");
-var useLocalStorage = process.env.BUILD_LOCALSTORAGE === "true" ?
-  "true" : "false";
+var useLS = process.env.BUILD_LOCALSTORAGE === "true";
 
 module.exports = {
   cache: true,
@@ -30,7 +29,7 @@ module.exports = {
   resolve: {
     alias: {
       "type": "type-of", // For `component-ajax`
-      "backbone": "exoskeleton"
+      "backbone": "exoskeleton" // For backbone.localStorage imports.
     }
   },
   plugins: [
@@ -42,12 +41,13 @@ module.exports = {
         // Signal production mode for React JS libs.
         NODE_ENV: JSON.stringify("production"),
         // Proxy env variable for LS build.
-        BUILD_LOCALSTORAGE: JSON.stringify(useLocalStorage)
+        BUILD_LOCALSTORAGE: JSON.stringify(useLS ? "true" : "false")
       }
     }),
     // Manually do source maps to use alternate host.
     new webpack.SourceMapDevToolPlugin(
       "bundle.js.map",
-      "\n//# sourceMappingURL=http://127.0.0.1:3001/app/js-dist/[url]")
+      useLS ? undefined : // Use normal, relative url for localstorage.
+        "\n//# sourceMappingURL=http://127.0.0.1:3001/app/js-dist/[url]")
   ]
 };
