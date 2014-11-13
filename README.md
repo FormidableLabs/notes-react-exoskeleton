@@ -4,7 +4,8 @@ Notes - React + Exoskeleton
 [![Build Status][trav_img]][trav_site]
 
 A version of Notes written using [React][react] and [CommonJS][cjs], built with
-[Webpack][webpack].
+[Webpack][webpack]. Test out the LocalStorage version at:
+http://formidablelabs.github.io/notes-react-exoskeleton/app.html
 
 ## Application
 
@@ -27,7 +28,9 @@ Notably, the app does _not_ include:
 Instead relying on React to mostly take care of DOM work with a little bit
 of VanillaJS.
 
-## Development
+## Development (REST)
+
+This section is for the convention (REST) server, with a real backend.
 
 ### Dev Mode
 
@@ -69,32 +72,68 @@ Run the server.
 $ NODE_ENV=production node server/index.js
 ```
 
+
+## Development (LocalStorage)
+
+For public, static GitHub pages branch (`gh-pages`), we post a different
+version of the app with the extra environment variable setting:
+`BUILD_LOCALSTORAGE=true`. This includes the additional Backbone.LocalStorage
+library in `bundle.js`, which we drive from a static, in-repo page,
+`app.html`.
+
+To develop against the local storage version,
+
+```
+$ npm install
+$ gulp ls
+```
+
+URLS to test things out:
+
+* `http://127.0.0.1:3001/app.html`: Static web page served from our static
+  sources server (same as is used for source maps).
+
+The live URL pushed to `gh-pages` is available at:
+http://formidablelabs.github.io/notes-react-exoskeleton/app.html
+
 ## React Notes
 
 ### Optimizations
 
-To test out how optimized the build is, here are some useful curl commands:
+**Production REST App**: To test out how optimized the build is, here are some
+useful curl commands:
 
 ```
 $ gulp prod
 
 # Minified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-170236
+170775
 
 # Minified gzipped size
 $ curl -so /dev/null -w '%{size_download}\n' --compressed http://127.0.0.1:3000/app/js-dist/bundle.js
-51695
+51910
 ```
 
-And in dev (for a comparison):
+**Demo LocalStorage Version**: And minified, unzipped in LocalStorage version
+
+```
+$ npm run-script build-ls
+$ gulp server:sources
+
+# Unminified size
+$ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3001/app/js-dist/bundle.js
+173722
+```
+
+**Development REST App**: And unminified, unzipped in dev (for a comparison):
 
 ```
 $ gulp dev
 
 # Unminified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3000/app/js-dist/bundle.js
-761157
+770537
 ```
 
 [trav]: https://travis-ci.org/
