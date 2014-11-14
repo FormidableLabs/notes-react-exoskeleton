@@ -121,7 +121,7 @@ $ curl -so /dev/null -w '%{size_download}\n' --compressed http://127.0.0.1:3000/
 $ npm run-script build-ls
 $ gulp server:sources
 
-# Unminified size
+# Minified size
 $ curl -so /dev/null -w '%{size_download}\n' http://127.0.0.1:3001/app/js-dist/bundle.js
 173722
 ```
