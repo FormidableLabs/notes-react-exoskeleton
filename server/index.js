@@ -51,7 +51,7 @@ app.use("/html5shiv", express["static"]("node_modules/html5shiv/dist"));
 var _errOrData = function (res, dataOverride) {
   return function (err, data) {
     if (err) {
-      res.status(500).json({ error: err.message || err.toString() });
+      return res.status(500).json({ error: err.message || err.toString() });
     }
 
     res.json(dataOverride || data);
