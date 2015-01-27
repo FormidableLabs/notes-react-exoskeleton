@@ -7,10 +7,9 @@ var markdown = require("markdown").markdown;
 
 module.exports = React.createClass({
   render: function () {
-    /*jshint unused:false */
     var html = markdown.toHTML(this.props.note.get("text"));
 
-    return (/*jshint ignore:start */
+    return (
       <div>
         <div className="well well-small">
           <h2 data-qa-name="note-view-title">
@@ -19,6 +18,6 @@ module.exports = React.createClass({
         </div>
         <div dangerouslySetInnerHTML={{__html: html}} />
       </div>
-    /*jshint ignore:end */);
+    );
   }
 });

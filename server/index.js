@@ -71,8 +71,8 @@ app["delete"]("/api/notes", function (req, res) {
 });
 
 app.post("/api/notes", function (req, res) {
-  var title = req.body.title || "",
-    text = req.body.text || "";
+  var title = req.body.title || "";
+  var text = req.body.text || "";
 
   db.run("insert into notes (title, text) values(?,?)", title, text)
     .prepare("select * from notes order by id desc limit 1")
@@ -80,9 +80,9 @@ app.post("/api/notes", function (req, res) {
 });
 
 app.put("/api/notes/:id", function (req, res) {
-  var title = req.body.title,
-    text = req.body.text,
-    id = req.params.id;
+  var title = req.body.title;
+  var text = req.body.text;
+  var id = req.params.id;
 
   db.run("update notes set title=?, text=? where id=?", title, text, id)
     .prepare("select * from notes where id=?", id)

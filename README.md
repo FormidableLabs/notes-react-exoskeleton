@@ -38,7 +38,7 @@ Install, setup.
 
 ```
 $ npm install
-$ ./scripts/init-db.js
+$ node scripts/init-db.js
 ```
 
 Run the watchers, dev and source maps servers
@@ -63,7 +63,7 @@ Install, setup.
 ```
 $ npm install --production
 $ npm run-script build
-$ ./scripts/init-db.js
+$ node scripts/init-db.js
 ```
 
 Run the server.

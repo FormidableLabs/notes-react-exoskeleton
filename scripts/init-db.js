@@ -1,4 +1,7 @@
-#!/usr/bin/env node
+// TODO: Renable shebang
+// https://github.com/jscs-dev/node-jscs/issues/730
+// #!/usr/bin/env node
+// Initialize dev. database
 var sql = require("sqlite3");
 
 var DB_PATH = __dirname + "/../server/notes.sqlite";

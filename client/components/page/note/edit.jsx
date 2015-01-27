@@ -9,7 +9,7 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // State
   // --------------------------------------------------------------------------
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       title: this.props.note.get("title"),
       text: this.props.note.get("text")
@@ -42,7 +42,7 @@ module.exports = React.createClass({
   // Render
   // --------------------------------------------------------------------------
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <div>
         <form role="form">
           <div className="form-group">
@@ -62,6 +62,6 @@ module.exports = React.createClass({
           </div>
         </form>
       </div>
-    /*jshint ignore:end */);
+    );
   }
 });

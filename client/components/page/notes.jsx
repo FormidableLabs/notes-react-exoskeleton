@@ -4,7 +4,6 @@
  *
  * Displays a list of notes.
  */
-/*jshint unused:false */
 var React = require("react");
 var Backbone = require("exoskeleton");
 var _ = Backbone.utils;
@@ -20,7 +19,7 @@ module.exports = React.createClass({
   // TODO: ABSTRACT OUT -- Model sync.
   // From: https://github.com/facebook/react/blob/1be9a9e/examples/
   //       todomvc-backbone/js/app.js#L148-L171
-  componentDidMount: function() {
+  componentDidMount: function () {
     // [BB] Add forceUpdate bindings.
     // Adding a model with have two actual force updates:
     // (1) On `add` without an `id` from the server.
@@ -30,7 +29,7 @@ module.exports = React.createClass({
     }, this);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     // [BB] Stop all listeners.
     this.props.notes.off(null, null, this);
   },
@@ -38,7 +37,7 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // State
   // --------------------------------------------------------------------------
-  getInitialState: function() {
+  getInitialState: function () {
     return { newNote: "" };
   },
 
@@ -58,7 +57,7 @@ module.exports = React.createClass({
     }
   },
 
-  createNote: function (ev) {
+  createNote: function () {
     // Short-circuit if empty note.
     if (!this.state.newNote) {
       return;
@@ -86,9 +85,9 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // Add single child note view to end of notes list.
   addNote: function (note) {
-    return (/*jshint ignore:start */
+    return (
       <NotesItem note={note} key={note.id || note.id === 0 ? note.id : note.cid} />
-    /*jshint ignore:end */);
+    );
   },
 
   // Render.
@@ -101,7 +100,7 @@ module.exports = React.createClass({
     noteNodes = _.sortBy(noteNodes, function (m) { return m.get("createdAt"); })
       .map(this.addNote, this);
 
-    return (/*jshint ignore:start */
+    return (
       <Base>
         <div className="panel panel-default">
           <table className="table table-bordered table-hover notes-list">
@@ -129,6 +128,6 @@ module.exports = React.createClass({
           </table>
         </div>
       </Base>
-    /*jshint ignore:end */);
+    );
   }
 });

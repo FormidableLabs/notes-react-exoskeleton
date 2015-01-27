@@ -2,7 +2,6 @@
 /**
  * Entry point.
  */
-/*jshint unused:false */
 // Exoskeleton
 var Backbone = require("exoskeleton");
 var ajax = require("component-ajax");
@@ -11,7 +10,6 @@ Backbone.ajax = function () { // Ajax support.
 };
 
 // Normal lbs
-var React = require("react");
 var NotesCollection = require("./collections/notes");
 var Router = require("./routers/router");
 var collection = NotesCollection.getInstance();
@@ -21,9 +19,13 @@ var collection = NotesCollection.getInstance();
 // ----------------------------------------------------------------------------
 // Helper: Start up app.
 var _startApp = function () {
-  /*globals global:true, process:false */
+  /*global global:true, process:false */
   var root = typeof window !== "undefined" ? window : global;
-  var router = new Router();
+
+  // Side effect: Instantiate the router.
+  /*eslint-disable no-new */
+  new Router();
+  /*eslint-enable no-new */
 
   // Check if pushstate available to avoid bad listeners from Exoskeleton...
   // http://stackoverflow.com/questions/22781394
