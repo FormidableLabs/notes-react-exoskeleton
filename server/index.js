@@ -2,6 +2,7 @@
 require("node-jsx").install({ extension: ".jsx" });
 
 // Server
+var path = require("path");
 var express = require("express");
 var compress = require("compression");
 var exphbs = require("express-handlebars");
@@ -11,7 +12,7 @@ var UAParser = require("ua-parser-js");
 
 var app = express();
 var db = null;
-var DB_PATH = __dirname + "/notes.sqlite";
+var DB_PATH = path.join(__dirname, "notes.sqlite");
 var PORT = process.env.PORT || 3000;
 
 // Dev-only overrides.
@@ -31,7 +32,7 @@ app.use(compress());
 app.use(bodyParser());
 app.engine(".hbs", exphbs({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
-app.set("views", __dirname + "/../templates");
+app.set("views", path.join(__dirname, "../templates"));
 
 // ----------------------------------------------------------------------------
 // Static Routes
@@ -39,11 +40,11 @@ app.set("views", __dirname + "/../templates");
 app.use("/app/js-dist/*.map", function (req, res) {
   res.send(404, "404"); // Prevent sourcemap serving.
 });
-app.use("/app/js-dist", express["static"]("app/js-dist"));
-app.use("/bootstrap", express["static"]("node_modules/bootstrap/dist"));
-app.use("/css", express["static"]("app/css"));
-app.use("/es5-shim", express["static"]("node_modules/es5-shim"));
-app.use("/html5shiv", express["static"]("node_modules/html5shiv/dist"));
+app.use("/app/js-dist", express.static("app/js-dist"));
+app.use("/bootstrap", express.static("node_modules/bootstrap/dist"));
+app.use("/css", express.static("app/css"));
+app.use("/es5-shim", express.static("node_modules/es5-shim"));
+app.use("/html5shiv", express.static("node_modules/html5shiv/dist"));
 
 // ----------------------------------------------------------------------------
 // API
@@ -66,7 +67,7 @@ app.get("/api/notes", function (req, res) {
   _getAllNotes(_errOrData(res));
 });
 
-app["delete"]("/api/notes", function (req, res) {
+app.delete("/api/notes", function (req, res) {
   db.run("delete from notes", _errOrData(res, {}));
 });
 
@@ -89,7 +90,7 @@ app.put("/api/notes/:id", function (req, res) {
     .get(_errOrData(res));
 });
 
-app["delete"]("/api/notes/:id", function (req, res) {
+app.delete("/api/notes/:id", function (req, res) {
   db.run("delete from notes where id=?", req.params.id, _errOrData(res, {}));
 });
 

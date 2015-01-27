@@ -2,9 +2,10 @@
 // https://github.com/jscs-dev/node-jscs/issues/730
 // #!/usr/bin/env node
 // Initialize dev. database
+var path = require("path");
 var sql = require("sqlite3");
 
-var DB_PATH = __dirname + "/../server/notes.sqlite";
+var DB_PATH = path.join(__dirname, "../server/notes.sqlite");
 /*jslint bitwise: true */
 var OPEN_STATE = sql.OPEN_READWRITE | sql.OPEN_CREATE;
 /*jslint bitwise: false */
@@ -23,10 +24,10 @@ var init = module.exports = function (dbPath, callback) {
       return callback(err);
     }
 
-    db.run("drop table if exists " + TABLE_NAME, function (err) {
-      if (err) { return callback(err); }
-      db.run("create table " + TABLE_NAME + " " + ROWS, function (err) {
-        callback(err, db);
+    db.run("drop table if exists " + TABLE_NAME, function (dropErr) {
+      if (dropErr) { return callback(dropErr); }
+      db.run("create table " + TABLE_NAME + " " + ROWS, function (createErr) {
+        callback(createErr, db);
       });
     });
   });

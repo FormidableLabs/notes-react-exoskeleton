@@ -47,7 +47,10 @@ module.exports = {
     // Manually do source maps to use alternate host.
     new webpack.SourceMapDevToolPlugin(
       "bundle.js.map",
-      useLS ? undefined : // Use normal, relative url for localstorage.
-        "\n//# sourceMappingURL=http://127.0.0.1:3001/app/js-dist/[url]")
+
+      // Use normal, relative url for localstorage.
+      /*eslint-disable no-undefined */
+      useLS ? undefined : "\n//# sourceMappingURL=http://127.0.0.1:3001/app/js-dist/[url]")
+      /*eslint-enable no-undefined */
   ]
 };

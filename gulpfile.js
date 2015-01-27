@@ -15,6 +15,20 @@ var rimraf = require("gulp-rimraf");
 var buildCfg = require("./webpack.config");
 
 // ----------------------------------------------------------------------------
+// Constants
+// ----------------------------------------------------------------------------
+var FRONTEND_FILES = [
+  "client/**/*.{js,jsx}"
+];
+
+var BACKEND_FILES = [
+  "scripts/**/*.js",
+  "server/**/*.js",
+  "test/**/*.js",
+  "*.js"
+];
+
+// ----------------------------------------------------------------------------
 // Helpers
 // ----------------------------------------------------------------------------
 // Strip comments from JsHint JSON files (naive).
@@ -26,11 +40,9 @@ var _jsonCfg = function (name) {
 // ----------------------------------------------------------------------------
 // EsLint
 // ----------------------------------------------------------------------------
-gulp.task("eslint-frontend", function (cb) {
+gulp.task("eslint-frontend", function () {
   return gulp
-    .src([
-      "client/**/*.{js,jsx}"
-    ])
+    .src(FRONTEND_FILES)
     .pipe(eslint({
       envs: [
         "browser"
@@ -39,20 +51,30 @@ gulp.task("eslint-frontend", function (cb) {
     .pipe(eslint.formatEach("stylish", process.stderr))
     .pipe(eslint.failOnError());
 });
-gulp.task("eslint", ["eslint-frontend"]);
+
+gulp.task("eslint-backend", function () {
+  return gulp
+    .src(BACKEND_FILES)
+    .pipe(eslint({
+      envs: [
+        "node"
+      ]
+    }))
+    .pipe(eslint.formatEach("stylish", process.stderr))
+    .pipe(eslint.failOnError());
+});
+
+gulp.task("eslint", ["eslint-frontend", "eslint-backend"]);
 
 // ----------------------------------------------------------------------------
 // JsCs
 // ----------------------------------------------------------------------------
 gulp.task("jscs", function () {
   return gulp
-    .src([
-      "client/**/*.{js,jsx}",
-      "scripts/**/*.js",
-      "server/**/*.js",
-      "test/**/*.js",
-      "*.js"
-    ])
+    .src([].concat(
+      FRONTEND_FILES,
+      BACKEND_FILES
+    ))
     .pipe(jsxcs(_jsonCfg(".jscsrc")));
 });
 
@@ -162,9 +184,7 @@ gulp.task("build:ls", _webpack(buildCfg, [
   })
 ]));
 gulp.task("watch:ls", function () {
-  gulp.watch([
-    "client/**/*.{js,jsx}"
-  ], ["build:ls"]);
+  gulp.watch(FRONTEND_FILES, ["build:ls"]);
 });
 
 // ----------------------------------------------------------------------------
