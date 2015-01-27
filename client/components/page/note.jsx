@@ -4,7 +4,6 @@
  *
  * A single note.
  */
-/*jshint unused:false */
 var React = require("react");
 var Base = require("./base.jsx");
 var NoteView = require("./note/view.jsx");
@@ -27,13 +26,13 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <Base>
         {this.props.action === "view" ?
           <NoteView note={this.props.note} /> :
           <NoteEdit note={this.props.note} />
         }
       </Base>
-    /*jshint ignore:end */);
+    );
   }
 });

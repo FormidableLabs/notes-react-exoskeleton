@@ -4,7 +4,6 @@
  *
  * Controls note nav bar and emits navigation events.
  */
-/*jshint unused:false */
 var React = require("react");
 var Backbone = require("exoskeleton");
 var Base = require("./base.jsx");
@@ -43,7 +42,7 @@ module.exports = React.createClass({
   // Render
   // --------------------------------------------------------------------------
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <Base>
         <ul className="nav navbar-nav note-nav">
           <li className={this.props.action === "view" ? " active" : ""}>
@@ -68,6 +67,6 @@ module.exports = React.createClass({
           </li>
         </ul>
       </Base>
-    /*jshint ignore:end */);
+    );
   }
 });

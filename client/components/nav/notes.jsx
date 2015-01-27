@@ -4,7 +4,6 @@
  *
  * Controls notes nav bar and emits navigation events.
  */
-/*jshint unused:false */
 var React = require("react");
 var Base = require("./base.jsx");
 
@@ -28,7 +27,7 @@ module.exports = React.createClass({
   // Render
   // --------------------------------------------------------------------------
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <Base>
         <form className="nav navbar-nav navbar-right navbar-form-nonresp navbar-search"
               role="search">
@@ -40,6 +39,6 @@ module.exports = React.createClass({
           </div>
         </form>
       </Base>
-    /*jshint ignore:end */);
+    );
   }
 });

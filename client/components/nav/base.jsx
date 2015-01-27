@@ -12,7 +12,7 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <nav className="navbar navbar-default" role="navigation">
         <div className="navbar-header">
           <button type="button" className="navbar-toggle"
@@ -29,6 +29,6 @@ module.exports = React.createClass({
           {this.props.children}
         </div>
       </nav>
-    /*jshint ignore:end */);
+    );
   }
 });

@@ -30,7 +30,7 @@ module.exports = React.createClass({
   // Render
   // --------------------------------------------------------------------------
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <tr id={this.props.note.id}
           data-qa-name="notes-item">
         <td>
@@ -58,6 +58,6 @@ module.exports = React.createClass({
           </div>
         </td>
       </tr>
-    /*jshint ignore:end */);
+    );
   }
 });

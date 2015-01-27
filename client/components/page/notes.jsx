@@ -4,7 +4,6 @@
  *
  * Displays a list of notes.
  */
-/*jshint unused:false */
 var React = require("react");
 var Backbone = require("exoskeleton");
 var _ = Backbone.utils;
@@ -86,9 +85,9 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // Add single child note view to end of notes list.
   addNote: function (note) {
-    return (/*jshint ignore:start */
+    return (
       <NotesItem note={note} key={note.id || note.id === 0 ? note.id : note.cid} />
-    /*jshint ignore:end */);
+    );
   },
 
   // Render.
@@ -101,7 +100,7 @@ module.exports = React.createClass({
     noteNodes = _.sortBy(noteNodes, function (m) { return m.get("createdAt"); })
       .map(this.addNote, this);
 
-    return (/*jshint ignore:start */
+    return (
       <Base>
         <div className="panel panel-default">
           <table className="table table-bordered table-hover notes-list">
@@ -129,6 +128,6 @@ module.exports = React.createClass({
           </table>
         </div>
       </Base>
-    /*jshint ignore:end */);
+    );
   }
 });

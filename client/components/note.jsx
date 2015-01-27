@@ -2,8 +2,7 @@
 /**
  * Note full page.
  */
- /*jshint unused:false */
-var React = require("react");
+ var React = require("react");
 var NoteNav = require("./nav/note.jsx");
 var NotePage = require("./page/note.jsx");
 
@@ -27,12 +26,12 @@ module.exports = React.createClass({
   // Render
   // --------------------------------------------------------------------------
   render: function () {
-    return (/*jshint ignore:start */
+    return (
       <div>
         <NoteNav note={this.props.note} action={this.state.action}
                  handleActionChange={this.setAction} />
         <NotePage note={this.props.note} action={this.state.action} />
       </div>
-    /*jshint ignore:end */);
+    );
   }
 });
