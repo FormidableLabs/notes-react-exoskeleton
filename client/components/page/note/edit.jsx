@@ -9,7 +9,7 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // State
   // --------------------------------------------------------------------------
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       title: this.props.note.get("title"),
       text: this.props.note.get("text")

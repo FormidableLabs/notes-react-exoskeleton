@@ -20,7 +20,7 @@ module.exports = React.createClass({
   // TODO: ABSTRACT OUT -- Model sync.
   // From: https://github.com/facebook/react/blob/1be9a9e/examples/
   //       todomvc-backbone/js/app.js#L148-L171
-  componentDidMount: function() {
+  componentDidMount: function () {
     // [BB] Add forceUpdate bindings.
     // Adding a model with have two actual force updates:
     // (1) On `add` without an `id` from the server.
@@ -30,7 +30,7 @@ module.exports = React.createClass({
     }, this);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     // [BB] Stop all listeners.
     this.props.notes.off(null, null, this);
   },
@@ -38,7 +38,7 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // State
   // --------------------------------------------------------------------------
-  getInitialState: function() {
+  getInitialState: function () {
     return { newNote: "" };
   },
 

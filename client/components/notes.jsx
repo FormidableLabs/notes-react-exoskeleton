@@ -11,7 +11,7 @@ module.exports = React.createClass({
   // --------------------------------------------------------------------------
   // State
   // --------------------------------------------------------------------------
-  getInitialState: function() {
+  getInitialState: function () {
     return { filter: "" };
   },
 

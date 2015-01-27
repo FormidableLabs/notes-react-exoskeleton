@@ -14,14 +14,14 @@ module.exports = React.createClass({
   // TODO: ABSTRACT OUT -- Model sync.
   // From: https://github.com/facebook/react/blob/1be9a9e/examples/
   //       todomvc-backbone/js/app.js#L148-L171
-  componentDidMount: function() {
+  componentDidMount: function () {
     // [BB] Add forceUpdate bindings.
     this.props.note.on("add change remove", function () {
       this.forceUpdate();
     }, this);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     // [BB] Stop all listeners.
     this.props.note.off(null, null, this);
   },
