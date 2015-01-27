@@ -57,7 +57,7 @@ module.exports = React.createClass({
     }
   },
 
-  createNote: function (ev) {
+  createNote: function () {
     // Short-circuit if empty note.
     if (!this.state.newNote) {
       return;
