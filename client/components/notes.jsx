@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 /**
  * Notes full page.
  */

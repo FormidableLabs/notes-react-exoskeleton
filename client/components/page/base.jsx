@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 /**
  * Base page component.
  */

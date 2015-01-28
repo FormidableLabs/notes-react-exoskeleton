@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 /**
  * Note Navigation Bar View
  *

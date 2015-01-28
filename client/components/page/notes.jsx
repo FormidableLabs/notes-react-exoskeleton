@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 /**
  * Notes View
  *
