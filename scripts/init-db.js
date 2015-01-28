@@ -36,8 +36,8 @@ var init = module.exports = function (dbPath, callback) {
 // Script. Use defaults (init dev. database).
 if (require.main === module) {
   init(DB_PATH, function (err) {
-    if (err)  { console.log("ERROR: ", err); }
-    if (db)   { db.close(); }
+    if (err) { console.log("ERROR: ", err); }
+    if (db) { db.close(); }
     console.log("Finished initialization of: " + DB_PATH);
   });
 }

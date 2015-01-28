@@ -23,13 +23,13 @@ module.exports = {
   },
   externals: {
     // Deliberately undefined vars for conditional exclusion for exoskeleton.
-    "jquery": "__NOOP",
-    "underscore": "__NOOP"
+    jquery: "__NOOP",
+    underscore: "__NOOP"
   },
   resolve: {
     alias: {
-      "type": "type-of", // For `component-ajax`
-      "backbone": "exoskeleton" // For backbone.localStorage imports.
+      type: "type-of", // For `component-ajax`
+      backbone: "exoskeleton" // For backbone.localStorage imports.
     }
   },
   plugins: [
