@@ -24,11 +24,21 @@
     "try",
     "catch"
   ],
+  "requireSpacesInFunctionDeclaration": {
+    "beforeOpeningCurlyBrace": true
+  },
   "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true,
     "beforeOpeningRoundBrace": true
   },
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningCurlyBrace": true,
+    "beforeOpeningRoundBrace": true
+  },
   "disallowSpacesInNamedFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInFunctionDeclaration": {
     "beforeOpeningRoundBrace": true
   },
   "requireSpaceAfterLineComment": true,
