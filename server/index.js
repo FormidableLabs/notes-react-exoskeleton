@@ -14,8 +14,6 @@ var app = express();
 var db = null;
 var DB_PATH = path.join(__dirname, "notes.sqlite");
 var PORT = process.env.PORT || 3000;
-var USER = "notes";
-var PASS = "react";
 
 // Dev-only overrides.
 var NO_SERVER_SIDE = false;
@@ -35,7 +33,6 @@ app.use(bodyParser());
 app.engine(".hbs", exphbs({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "../templates"));
-app.use(express.basicAuth(USER, PASS));
 
 // ----------------------------------------------------------------------------
 // Static Routes
